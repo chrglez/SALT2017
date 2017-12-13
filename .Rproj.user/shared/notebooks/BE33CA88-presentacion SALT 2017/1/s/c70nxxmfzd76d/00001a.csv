@@ -1,0 +1,11 @@
+"0","m <-  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(data = lonlat_db2,
+                   radius = lonlat_db2$radius/2,
+                   color = ~pal(tipo.x),
+                   label = ~htmlEscape(paste0(lugar,""("",num_count,"")""))) %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolylines(data = flows, weight = flows$count)
+"
+"2","Error in flows$count : no $ method for object without attributes
+"
