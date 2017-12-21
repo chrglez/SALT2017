@@ -52,18 +52,18 @@ library(dplyr)
 library(highcharter)
 
 
-activ <- read_rds('../160305 Tripadvisor/reviews_actividades/bd_actividades.Rds')
+activ <- read_rds('data/bd_actividades.Rds')
 activ_comen <- activ %>%
       group_by(lugar) %>%
       summarise(num_count =n())
 
-hoteles <- read_rds('../160305 Tripadvisor/file_hoteles.Rds')
+hoteles <- read_rds('data/file_hoteles.Rds')
 
 hotel_comen <- hoteles %>%
       group_by(hotel) %>%
       summarise(num_count =n())
 
-rest <- read_rds("../160305 Tripadvisor/reviews_restaurantes/bd_restaurantes.Rds")
+rest <- read_rds("data/bd_restaurantes.Rds")
 
 rest_comen <- rest %>%
       group_by(lugar) %>%
@@ -263,13 +263,13 @@ forceNetwork(Links = edgeList,
 library(leaflet)
 library(htmltools)
 library(geosphere)
-lonlat_hoteles <- readRDS("../160305 Tripadvisor/lonlat_network_hoteles.Rds")
+lonlat_hoteles <- readRDS("data/lonlat_network_hoteles.Rds")
 names(lonlat_hoteles)[3]<-"lugar"
 lonlat_hoteles[3,c("lon","lat")] <- c(27.7644221,-15.5743847)
-lonlat_actividades <- readRDS("../160305 Tripadvisor/lonlat_network_actividades.Rds")
+lonlat_actividades <- readRDS("data/lonlat_network_actividades.Rds")
 names(lonlat_actividades)[3]<-"lugar"
 
-lonlat_restaurantes <- readRDS("../160305 Tripadvisor/lonlat_network_restaurantes.Rds")
+lonlat_restaurantes <- readRDS("data/lonlat_network_restaurantes.Rds")
 names(lonlat_restaurantes)[3]<-"lugar"
 
 lonlat_db <- bind_rows(lonlat_hoteles,lonlat_actividades,lonlat_restaurantes, .id="tipo" )
